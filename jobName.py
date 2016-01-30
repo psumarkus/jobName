@@ -5,6 +5,7 @@ Created on Jan 30, 2016
 '''
 
 fname = "labelPDF.txt"
+out = "clipboard.txt"
 fh = open(fname)
 count = -1 #only needed if line numbers need to be checked
 
@@ -19,11 +20,25 @@ for line in fh:
     date = words[0]
     labelDate = date[4:]
 
+#open output file for writing results
+    f = open(out, 'w')
+
+
+
 #format extracted text for label
-    print words[40], words[35], words[36], labelDate
-    print words[5], words[6], words[9], words[12], words[13]
-    print "To schedule a consultation about this print, please email: makercommons@psu.edu"
+    lineOne = (words[40]," ", words[35], " ", words[36], " ", labelDate, '\n')
+    f.writelines(lineOne)
+    print lineOne
     
+    lineTwo = (words[5], " ",words[6], " ",words[9], " ",words[12], " ",words[13], '\n')
+    f.writelines(lineTwo)
+    print lineTwo
+    
+    lineThree = ("To schedule a consultation about this print, please email: makercommons@psu.edu", '\n')
+    f.writelines(lineThree)
+    print lineThree
+    
+    f.close()
     
 # look at text file structure with line numbers to indicate item index for formatting of label
     #for word in words:
