@@ -1,46 +1,35 @@
 '''
-Created on Jan 30, 2016
+Created on Feb 4, 2016
 
 @author: tbrown
 '''
+import re
+from bs4 import BeautifulSoup #installation at http://www.crummy.com/software/BeautifulSoup/
 
-fname = "labelPDF.txt"
+fname = "MakerBot Innovation Center.html"
+soup = BeautifulSoup(open(fname)) 
 out = "clipboard.txt"
-fh = open(fname)
-count = -1 #only needed if line numbers need to be checked
 
+#print soup.prettify()
 
-#open txt file from automator pdf to text convert and split into individual components
-for line in fh:
-    words = line.split()
-    size = len(words)
-    
-#remove funky '????' from date   
-    date =[]
-    date = words[0]
-    labelDate = date[4:]
+nameGetter = soup.find_all(text = re.compile("^Requestor"))[0].next
+emailGetter = soup.find_all(text = re.compile("^Requestor Email"))[0].next.next.next_element
+#filamentGetter = soup.find_all(text = re.compile("Filament Usage Actual"))[0].next
+#notesGetter = soup.find_all(text = re.compile("^Campus"))#not yet implemented in form
+
+print nameGetter
+print emailGetter
+#print filamentGetter
+#print notesGetter
+print " "#space the final frontier
 
 #open output file for writing results
-    f = open(out, 'w')
-
-
-
+f = open(out, 'w')
+    
 #format extracted text for label
-    lineOne = (words[40]," ", words[35], " ", words[36], " ", labelDate, '\n')
-    f.writelines(lineOne)
-    print lineOne
-    
-    lineTwo = (words[5], " ",words[6], " ",words[9], " ",words[12], " ",words[13], '\n')
-    f.writelines(lineTwo)
-    print lineTwo
-    
-    lineThree = ("To schedule a consultation about this print, please email: makercommons@psu.edu", '\n')
-    f.writelines(lineThree)
-    print lineThree
-    
-    f.close()
-    
-# look at text file structure with line numbers to indicate item index for formatting of label
-    #for word in words:
-        #count = count + 1
-        #print count, word
+lineOne = (nameGetter,'\n', emailGetter, '\n',"\n To schedule a consultation about this \n print, please email: makercommons@psu.edu")
+
+f.writelines(lineOne)
+print lineOne
+
+f.close()
