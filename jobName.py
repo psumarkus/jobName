@@ -38,4 +38,4 @@ print lineOne
 
 f.close()
 
-os.system("lpr o landscape -P DYMO_LabelWriter_450_Turbo clipboard.txt")
+os.system("lpr -o landscape -P DYMO_LabelWriter_450_Turbo clipboard.txt")
