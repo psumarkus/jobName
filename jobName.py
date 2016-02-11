@@ -35,7 +35,7 @@ f = open(out, 'w')
 #format extracted text for label
 #lineOne = (nameGetter,'\n', emailGetter, '\n', "\n Failing to add a Raft or \n Supports when preparing the \n .makerbot file is the most \n common reason for a failed print. \n Please check: \n makercommons.psu.edu/fail \n for more info.  Consultations \n can be scheduled by emailing  \n makercommons@psu.edu.")
 #for landscape print
-lineOne = (nameGetter,'\n', emailGetter, '\n', '\n', "Not adding a Raft or Supports when   prepping the .makerbot file is the most common reason for failed prints. \n Info: makercommons.psu.edu/fail \n Consultation Scheduling: makercommons@psu.edu")
+lineOne = (nameGetter,'\n', emailGetter, '\n', '\n', "Not adding a Raft or Supports when   prepping the .makerbot file is the   most common reason for failed prints. \n Info: makercommons.psu.edu/fail \n Consultation Scheduling: \n makercommons@psu.edu")
 
 
 f.writelines(lineOne)
