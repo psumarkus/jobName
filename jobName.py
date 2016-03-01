@@ -25,7 +25,15 @@ emailGetter = soup.find_all(text = re.compile("^Requestor Email"))[0].next.next.
 #notesGetter = soup.find_all(text = re.compile("^Campus"))#not yet implemented in form
 today =str(date.today())
 print today
-print nameGetter
+#print nameGetter
+nameSplitter = nameGetter.split()
+#print nameSplitter[0]
+lastName = nameSplitter[1]
+firstName = nameSplitter[0]
+
+print lastName,",", firstName
+
+
 print emailGetter
 #print printerGetter
 #keep additional options out for now in case html is from rest page instead of jobs. once location parsing or printer name is added 
@@ -39,7 +47,7 @@ f = open(out, 'w')
 #format extracted text for label
 #lineOne = (nameGetter,'\n', emailGetter, '\n', "\n Failing to add a Raft or \n Supports when preparing the \n .makerbot file is the most \n common reason for a failed print. \n Please check: \n makercommons.psu.edu/fail \n for more info.  Consultations \n can be scheduled by emailing  \n makercommons@psu.edu.")
 #for landscape print
-lineOne = (nameGetter, today, " ", emailGetter, '\n', '\n', "Not adding a Raft or Supports when   prepping the .makerbot file is the   most common reason for failed prints. \n Info: makercommons.psu.edu/fail \n Consultation Scheduling: \n makercommons@psu.edu")
+lineOne = (lastName,",", firstName,'\n', today, " ", emailGetter, '\n', '\n', "Not adding a Raft or Supports when   prepping the .makerbot file is the   most common reason for failed prints. \n Info: makercommons.psu.edu/fail \n Consultation Scheduling: \n makercommons@psu.edu")
 
 
 f.writelines(lineOne)
