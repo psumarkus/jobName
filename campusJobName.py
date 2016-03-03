@@ -27,17 +27,17 @@ campusGetter = soup.find_all(text = re.compile("^Requestor Notes"))[0].next
 #filamentGetter = soup.find_all(text = re.compile("Filament Usage Actual"))[0].next
 #notesGetter = soup.find_all(text = re.compile("^Campus"))#not yet implemented in form
 today =str(date.today())
-print today
+#print today
 #print nameGetter
 nameSplitter = nameGetter.split()
 #print nameSplitter[0]
 lastName = nameSplitter[1]
 firstName = nameSplitter[0]
 
-print lastName,",", firstName
+#print lastName,",", firstName
 
 
-print emailGetter
+#print emailGetter
 #print printerGetter
 #keep additional options out for now in case html is from rest page instead of jobs. once location parsing or printer name is added 
 #print filamentGetter
@@ -47,15 +47,15 @@ print emailGetter
 campusGetterUpper = campusGetter.upper()
 #fix that unicode crap
 cc = campusGetterUpper.encode('utf-8')
-print cc
+#print cc
 
 campusGetterSplitter = cc.upper()
 campusGetterSplitter = cc.split()
 
 campusListSize=len(campusList)
-print campusListSize
+#print campusListSize
 campusGetterSplitterSize=len(campusGetterSplitter)
-print campusGetterSplitterSize
+#print campusGetterSplitterSize
 
 for num in range(campusListSize):
     a= campusList[num]
@@ -69,6 +69,11 @@ for num in range(campusListSize):
             
             continue
         
+
+print campus
+print lastName,",", firstName
+print today
+print emailGetter
 
 #open output file for writing results
 f = open(out, 'w')
