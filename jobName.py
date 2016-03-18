@@ -28,7 +28,11 @@ print today
 #print nameGetter
 nameSplitter = nameGetter.split()
 #print nameSplitter[0]
-lastName = nameSplitter[1]
+if nameSplitter[2]:
+    lastName = nameSplitter[2]
+else:
+    lastName = nameSplitter[1]
+
 firstName = nameSplitter[0]
 
 print lastName,",", firstName
