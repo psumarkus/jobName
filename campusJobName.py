@@ -31,7 +31,7 @@ today =str(date.today())
 #print nameGetter
 nameSplitter = nameGetter.split()
 #print nameSplitter[0]
-lastName = nameSplitter[1]
+lastName = nameSplitter[1:]
 firstName = nameSplitter[0]
 
 #print lastName,",", firstName
